@@ -1,0 +1,85 @@
+<div class="snav-container" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="app-header">
+    <span class="toolbar-spacer"><img class="logo" src="./assets/logohawk.png" alt="Hawkeye" (click)="!snav.toggle()"> </span>
+
+    <h1 class="app-name">IPDR</h1>
+    <span>
+      <button mat-button routerLink="/dashboard">
+        <mat-icon  style="font-size: 40px;">reply</mat-icon>
+      </button>
+      <button mat-button (click)="logout()">
+        <!-- <mat-icon>exit_to_app</mat-icon> -->
+        <img class="logout" src="./assets/logout.png" alt="Logout">
+
+      </button>
+    </span>
+  </mat-toolbar>
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav opened="true" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <div class="side-content">
+
+        <div>
+          <button mat-raised-button routerLink="/ipdr/reports" [state]="{ start_time:range_start_time , end_time:range_end_time}" class="grey side-button">{{ipdr_buttons.reports}}</button>
+        </div>
+        &nbsp;
+        <button mat-raised-button [routerLink]="['/ipdr']" [state]="{btn_click: '',customized: true , start_time:range_start_time , end_time:range_end_time }" class="grey side-button">{{ipdr_buttons.custom}}</button>
+        <button mat-raised-button routerLink="/ipdr" [state]="{ btn_click : 'CommulateResult', start_time:range_start_time , end_time:range_end_time }" class="grey side-button"> {{ipdr_buttons.commulative}}</button>
+        <button mat-raised-button routerLink="/ipdr" [state]="{btn_click : 'Bandwidth', start_time:range_start_time , end_time:range_end_time }" class="grey side-button"> {{ipdr_buttons.bandwidth_util}}</button>
+        <button mat-raised-button routerLink="/ipdr" [state]="{btn_click : 'BandwidthProtocol', start_time:range_start_time , end_time:range_end_time }" class="grey side-button"> {{ipdr_buttons.bandwidth_prot}}</button>
+        <!-- <button mat-raised-button class="grey side-button"> Unclassified Traffic </button> -->
+        <button mat-raised-button class="blue side-button"> {{ipdr_buttons.bandwidth_barChart}} </button>
+        <button mat-raised-button routerLink="/ipdr" [state]="{ btn_click : 'PercentageConnections', start_time:range_start_time , end_time:range_end_time }" class="grey side-button"> {{ipdr_buttons.percent_con}}</button>
+        <button mat-raised-button routerLink="/ipdr" [state]="{btn_click : 'UsageIP', start_time:range_start_time , end_time:range_end_time}" class="grey side-button"> {{ipdr_buttons.usage}}</button>
+
+      </div>
+      <div class="side-content">
+        <button mat-raised-button (click)="getAllData()" class="grey side-button"> {{ipdr_buttons.generate}}</button>
+        <button mat-raised-button routerLink="/ipdr" class="grey side-button"> {{ipdr_buttons.clear}}</button>
+        <button mat-raised-button  class="grey side-button"> {{ipdr_buttons.save}}</button>
+      </div>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="row mat-elevation-z8 date-nav">
+        <div class="col left">
+          <span><b>From:</b></span>
+          <mat-form-field>
+            <input matInput [ngxMatDatetimePicker]="picker" placeholder="" [(ngModel)]="range_start_time">
+            <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker [showSeconds]="true" [enableMeridian]="true">
+            </ngx-mat-datetime-picker>
+          </mat-form-field>
+        </div>
+        <div class="col right">
+          <span><b>To:</b></span>
+          <mat-form-field>
+            <input matInput [ngxMatDatetimePicker]="picker1" placeholder="" [(ngModel)]="range_end_time">
+            <mat-datepicker-toggle matSuffix [for]="$any(picker1)"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker1 [showSeconds]="true" [enableMeridian]="true">
+            </ngx-mat-datetime-picker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="mat-elevation-z8 chart-area">
+        <div class="myChart">
+          <canvas id="myChart" class="chart-canvas"></canvas>
+          <!-- <ngx-charts-bar-vertical [results]="chart_values" [view]="view" [scheme]="colorScheme"  [schemeType]="schemeType" [gradient]="gradient" [xAxis]="xAxis" [yAxis]="yAxis"  [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel" [legendTitle]="legendTitle" [legendPosition]="legendPosition" [animations]="animations" [showGridLines]="showGridLines"
+              [xAxisTickFormatting]="formatString" [yAxisTickFormatting]="formatNumber"  [showDataLabel]="showDataLabel"
+              [barPadding]="barPadding" [tooltipDisabled]="tooltipDisabled" [roundEdges]="roundEdges" >
+          </ngx-charts-bar-vertical> -->
+        </div>
+      </div>
+      <!-- <div class="mat-elevation-z8 " style="text-align: center;">
+            <button mat-raised-button class="grey botto-button" (click)="exporter.exportTable('csv', {fileName:'IPDR_table'} )"> Export CSV</button>
+          </div> -->
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <!-- <label><b>Screen : : HTTP</b></label> -->
+  <div class="row ">
+    <div class="col-sm-3 background-color " style="text-align:left" >Status</div>
+    <div class="col-sm-6 background-color" ></div>
+    <div class="col-sm-3 background-color" >Screen Name: Bandwidth Bar Chart</div>
+  </div>
+</div>

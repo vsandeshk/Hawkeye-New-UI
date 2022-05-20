@@ -1,0 +1,354 @@
+<div class="snav-container" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="app-header">
+    <span class="toolbar-spacer"><img class="logo" src="./assets/logohawk.png" alt="Hawkeye" (click)="!snav.toggle()"> </span>
+
+    <h1 class="app-name">Policy Managment</h1>
+    <span>
+      <button mat-button routerLink="/dashboard">
+        <mat-icon  style="font-size: 40px;">reply</mat-icon>
+      </button>
+      <button mat-button (click)="logout()">
+        <!-- <mat-icon>exit_to_app</mat-icon> -->
+        <img class="logout" src="./assets/logout.png" alt="Logout"> 
+
+      </button>
+    </span>
+  </mat-toolbar>
+
+
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav opened="true" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <div class="side-content">
+        <button mat-raised-button class="grey side-main-button" (click)="btn_select_policy = !btn_select_policy" name="select_policy">Select Policy</button>
+        <mat-form-field *ngIf="btn_select_policy" appearance="standard" class="side-field">
+          <mat-label>Select Policy</mat-label>
+          <mat-select (selectionChange)="getPolicyData()" [(ngModel)]="select_policy">
+            <mat-option value=1>Reject</mat-option>
+            <mat-option value=2>Accept</mat-option>
+            <mat-option value=3>Mirror</mat-option>
+            <mat-option value=4>Redirect</mat-option>
+            <mat-option value=5>VPN Accept</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button class="grey side-main-button" (click)="btn_existing_policy = !btn_existing_policy">Existing
+          Policy</button>
+        <mat-form-field *ngIf="btn_existing_policy" appearance="standard" class="side-field">
+          <mat-label>Existing Policy</mat-label>
+          <mat-select (selectionChange)="getExistingPolicyData()" [(ngModel)]="select_existing_policy">
+            <mat-option value="all">All</mat-option>
+            <mat-option value="all_active">All Active</mat-option>
+            <mat-option value="all_inactive">All Inactive</mat-option>
+            <mat-option value="category_expanded">Category Expanded</mat-option>
+            <mat-option *ngFor="let field of existing_policies" [value]="field">
+              {{field}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button class="grey side-main-button" (click)="setDefaultDate()">Add New
+          Policy</button>
+        <form [formGroup]="formGroup" *ngIf="btn_add_new_policy">
+          <mat-form-field appearance="fill" class="side-field">
+            <mat-label>Add Policy</mat-label>
+            <mat-select formControlName="add_policy">
+              <mat-option value="1">Reject</mat-option>
+              <mat-option value="2">Accept</mat-option>
+              <mat-option value="3">Mirror</mat-option>
+              <mat-option value="4">Redirect</mat-option>
+              <mat-option value="5">VPN Accept</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="side-field">
+            <mat-label>Type</mat-label>
+            <mat-select (selectionChange)="onSelectedType()" formControlName="type">
+              <mat-option value="url">Url</mat-option>
+              <mat-option value="host">Host</mat-option>
+              <mat-option value="category">Category</mat-option>
+              <mat-option value="application">Application</mat-option>
+              <mat-option value="ip">IP</mat-option>
+              <mat-option value="ip_range">IP Range</mat-option>
+              <mat-option value="sid">Subscriber ID</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- "policy_type != 'category' &&  policy_type != 'application' && policy_type !='ip' " -->
+
+          <mat-form-field *ngIf="policy_type == 'url' || policy_type =='host' || policy_type == 'sid' " class="side-field">
+            <input matInput placeholder="Rule" formControlName="rule">
+          </mat-form-field>
+          <mat-form-field *ngIf="policy_type == 'category' ||  policy_type == 'application' " appearance="fill" class="side-field">
+            <mat-label>Rule</mat-label>
+            <mat-select formControlName="rule">
+              <mat-option *ngFor="let field of rule_values | keyvalue" [value]="field.key">
+                {{field.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div *ngIf="policy_type == 'ip' ">
+            <mat-form-field appearance="fill" class="side-field">
+              <input matInput placeholder="Source IP" formControlName="source_ip">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="side-field">
+              <input matInput placeholder="Source Port" formControlName="source_port">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="side-field">
+              <input matInput placeholder="Destination IP" formControlName="destination_ip">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="side-field">
+              <input matInput placeholder="Destination Port" formControlName="destination_port">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="side-field">
+              <mat-label>Protocol l3</mat-label>
+              <mat-select formControlName="l3">
+                <mat-option *ngFor="let field of l3 | keyvalue" [value]="field.key">
+                  {{field.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="side-field">
+              <mat-label>Protocol l4</mat-label>
+              <mat-select formControlName="l4">
+                <mat-option *ngFor="let field of l4 | keyvalue" [value]="field.key">
+                  {{field.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="side-field">
+              <mat-label>Protocol l7</mat-label>
+              <mat-select formControlName="l7">
+                <mat-option *ngFor="let field of applications | keyvalue" [value]="field.key">
+                  {{field.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div *ngIf="policy_type == 'ip_range'">
+            <mat-form-field appearance="fill" class="side-field">
+              <mat-label>Range</mat-label>
+              <mat-select formControlName="ip_range">
+                <mat-option value="source_ip_range"> Source IP </mat-option>
+                <mat-option value="destination_ip_range"> Destination IP </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="side-field">
+              <input matInput placeholder="First IP" formControlName="first_ip">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="side-field">
+              <input matInput placeholder="Last IP" formControlName="last_ip">
+            </mat-form-field>
+
+
+          </div>
+          <mat-form-field appearance="fill" class="side-field">
+            <mat-label>Throttle</mat-label>
+            <mat-select formControlName="throttle">
+              <mat-option *ngFor="let field of throttle | keyvalue" [value]="field.key">
+                {{field.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="side-field">
+            <input matInput [ngxMatDatetimePicker]="start_time" placeholder="Start Time" formControlName="start_time">
+            <mat-datepicker-toggle matSuffix [for]="$any(start_time)"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #start_time [showSeconds]="true" [enableMeridian]="true">
+            </ngx-mat-datetime-picker>
+          </mat-form-field>
+          <mat-form-field class="side-field">
+            <input matInput [ngxMatDatetimePicker]="end_time" placeholder="End Time" formControlName="end_time">
+            <mat-datepicker-toggle matSuffix [for]="$any(end_time)"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #end_time [showSeconds]="true" [enableMeridian]="true">
+            </ngx-mat-datetime-picker>
+          </mat-form-field>
+
+          <mat-form-field class="side-field">
+            <input matInput type = "number" placeholder="Threshold" formControlName="threshold">
+          </mat-form-field>
+          <mat-form-field appearance="standard" class="side-field">
+            <mat-label>State</mat-label>
+            <mat-select formControlName="active">
+              <mat-option value="1">Active</mat-option>
+              <mat-option value="0">Inactive</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="side-field">
+            <input matInput placeholder="Violation" formControlName="violation">
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="side-field">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+          <button mat-raised-button class="grey side-button" (click)="addData();"> Add </button>
+          <button mat-raised-button class="grey side-button" (click)="searchData();"> Search </button>
+          <button mat-raised-button class="grey side-button" (click)="updateData();"> Update </button>
+          <button mat-raised-button class="grey side-button" (click)="clearForm()"> Clear </button>
+          <button mat-raised-button class="grey side-button" (click)="deactivateData();"> Deactivate </button>
+          <button mat-raised-button class="grey side-button"> Import </button>
+
+        </form>
+
+      </div>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <!-- <div class="row mat-elevation-z8 date-nav">
+          <div class="col left">
+            <span> From: </span>
+            <mat-form-field>
+              <input matInput [ngxMatDatetimePicker]="picker" placeholder="" [(ngModel)]="range_start_time">
+              <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+              <ngx-mat-datetime-picker #picker [enableMeridian]="true">
+              </ngx-mat-datetime-picker>
+            </mat-form-field>
+          </div>
+          <div class="col right">
+            <span> To: </span>
+            <mat-form-field>
+              <input matInput [ngxMatDatetimePicker]="picker1" placeholder="" [(ngModel)]="range_end_time">
+              <mat-datepicker-toggle matSuffix [for]="$any(picker1)"></mat-datepicker-toggle>
+              <ngx-mat-datetime-picker #picker1 [enableMeridian]="true">
+              </ngx-mat-datetime-picker>
+            </mat-form-field>
+          </div>
+        </div> -->
+
+      <div class="data-table">
+        <div class="table-div mat-elevation-z8">
+          <table mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" matSort>
+
+            <!-- <ng-container matColumnDef="source_id">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Source ID </th>
+                            <td mat-cell *matCellDef="let row"> {{row.source_id}} </td>
+                        </ng-container> -->
+
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Rule </th>
+              <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Type</th>
+              <td mat-cell *matCellDef="let row"> {{row.type}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="packets_sent">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Packets Sent </th>
+              <td mat-cell *matCellDef="let row"> {{row.packets_sent}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="packets_rcvd">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Packets Received </th>
+              <td mat-cell *matCellDef="let row"> {{row.packets_rcvd}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="bytes_sent">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Byte Sent </th>
+              <td mat-cell *matCellDef="let row"> {{row.bytes_sent}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="bytes_rcvd">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Byte Received </th>
+              <td mat-cell *matCellDef="let row"> {{row.bytes_rcvd}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="start_time">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Time </th>
+              <td mat-cell *matCellDef="let row"> {{row.start_time | date:"medium"}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="end_time">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> End Time </th>
+              <td mat-cell *matCellDef="let row"> <span *ngIf="row.end_time == 'Indefinite'">{{row.end_time}} </span> <span *ngIf="row.end_time != 'Indefinite'">{{row.end_time | date:"medium"}}</span> </td>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="finish_time">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Finish </th>
+                            <td mat-cell *matCellDef="let row"> {{row.finish_time}} </td>
+                        </ng-container> -->
+
+            <ng-container matColumnDef="violation">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Violation </th>
+              <td mat-cell *matCellDef="let row"> {{row.violation}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="description">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Description</th>
+              <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="sessions_to_skip">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Sessions to Skip </th>
+              <td mat-cell *matCellDef="let row"> {{row.sessions_to_skip}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="active">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Active </th>
+              <td mat-cell *matCellDef="let row"> {{row.active}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="inserted">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Inserted </th>
+              <td mat-cell *matCellDef="let row"> {{row.inserted}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="throttle">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Throttle </th>
+              <td mat-cell *matCellDef="let row"> {{this.throttle[row.throttle]}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="policy_category">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Policy Category</th>
+              <td mat-cell *matCellDef="let row"> {{row.policy_category}} </td>
+            </ng-container>
+            <!-- Expanded Categories Table Data -->
+            <ng-container matColumnDef="url">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> url </th>
+              <td mat-cell *matCellDef="let row"> {{row.url}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="access_count">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Access Count </th>
+              <td mat-cell *matCellDef="let row"> {{row.access_count}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="last_accessed">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Accessed </th>
+              <td mat-cell *matCellDef="let row"> {{row.last_accessed | date:"medium"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="area_id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> area id </th>
+              <td mat-cell *matCellDef="let row"> {{row.area_id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="category1">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Category 1 </th>
+              <td mat-cell *matCellDef="let row"> {{categories[row.category1]}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="category2">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Category 2 </th>
+              <td mat-cell *matCellDef="let row"> {{categories[row.category2]}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="category3">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Category 3 </th>
+              <td mat-cell *matCellDef="let row"> {{categories[row.category3]}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="tableRowClick(row)"></tr>
+
+          </table>
+
+        </div>
+        <div class="mat-elevation-z8 " style="text-align: center;">
+          <button mat-raised-button class="grey botto-button" (click)="exporter.exportTable('csv', {fileName:'IPDR_table'} )"> Export CSV</button>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <!-- <label><b>Screen : : Policy Managment</b></label> -->
+  <div class="row ">
+    <div class="col-sm-3 background-color " style="text-align:left" >Status : {{ message}}</div>
+    <div class="col-sm-6 background-color" ></div>
+    <div class="col-sm-3 background-color" >Screen Name: Policy</div>
+  </div>
+</div>

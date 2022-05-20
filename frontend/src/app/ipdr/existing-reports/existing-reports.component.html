@@ -1,0 +1,228 @@
+<div class="snav-container" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="app-header">
+    <span class="toolbar-spacer"><img class="logo" src="./assets/logohawk.png" alt="Hawkeye" (click)="!snav.toggle()"> </span>
+
+    <h1 class="app-name">IPDR</h1>
+    <span>
+      <button mat-button routerLink="/dashboard">
+        <mat-icon  style="font-size: 40px;">reply</mat-icon>
+      </button>
+      <button mat-button (click)="logout()">
+        <!-- <mat-icon>exit_to_app</mat-icon> -->
+        <img class="logout" src="./assets/logout.png" alt="Logout">
+      </button>
+    </span>
+  </mat-toolbar>
+
+
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav opened="true" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <div class="side-content">
+
+        <div>
+          <button mat-raised-button class="blue side-field">{{ipdr_buttons.reports}}</button>
+          <mat-form-field appearance="fill" class="side-field">
+            <mat-label>Select Report</mat-label>
+            <mat-select  [(ngModel)]="selectedRecord">
+              <mat-option *ngFor="let field of reports_data" [value]="field">
+                {{field.Report_Name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-raised-button routerLink="/ipdr/reports" (click)="generateReport()"class="grey side-button">{{ipdr_buttons.show}}</button>
+        </div>
+        &nbsp;
+
+        <button mat-raised-button [routerLink]="['/ipdr']" [state]="{btn_click: '',customized: true , start_time:range_start_time , end_time:range_end_time }" class="grey side-button">{{ipdr_buttons.custom}}</button>
+        <button mat-raised-button routerLink="/ipdr" [state]="{ btn_click : 'CommulateResult', start_time:range_start_time , end_time:range_end_time }" class="grey side-button"> {{ipdr_buttons.commulative}}</button>
+        <button mat-raised-button routerLink="/ipdr" [state]="{btn_click : 'Bandwidth', start_time:range_start_time , end_time:range_end_time }" class="grey side-button"> {{ipdr_buttons.bandwidth_util}}</button>
+        <button mat-raised-button routerLink="/ipdr" [state]="{btn_click : 'BandwidthProtocol', start_time:range_start_time , end_time:range_end_time }" class="grey side-button"> {{ipdr_buttons.bandwidth_prot}}</button>
+        <!-- <button mat-raised-button class="grey side-button"> Unclassified Traffic </button> -->
+        <button mat-raised-button routerLink="/ipdr/bandwidth-bar-chart" [state]="{ start_time:range_start_time , end_time:range_end_time}" class="grey side-button"> {{ipdr_buttons.bandwidth_barChart}} </button>         <button mat-raised-button routerLink="/ipdr" [state]="{ btn_click : 'PercentageConnections', start_time:range_start_time , end_time:range_end_time }" class="grey side-button"> {{ipdr_buttons.percent_con}}</button>
+        <button mat-raised-button routerLink="/ipdr" [state]="{btn_click : 'UsageIP', start_time:range_start_time , end_time:range_end_time}" class="grey side-button"> {{ipdr_buttons.usage}}</button>
+
+      </div>
+      <div class="side-content">
+        <button mat-raised-button (click)="generateReport()" class="grey side-button"> {{ipdr_buttons.generate}}</button>
+        <button mat-raised-button routerLink="/ipdr" class="grey side-button"> {{ipdr_buttons.clear}}</button>
+        <button mat-raised-button  class="grey side-button"> {{ipdr_buttons.save}}</button>
+      </div>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="row mat-elevation-z8 date-nav">
+        <div class="col left">
+          <span><b>From:</b></span>
+          <mat-form-field>
+            <input matInput [ngxMatDatetimePicker]="picker" placeholder="" [(ngModel)]="range_start_time">
+            <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker [showSeconds]="true" [enableMeridian]="true">
+            </ngx-mat-datetime-picker>
+          </mat-form-field>
+        </div>
+        <div class="col right">
+          <span><b>To:</b></span>
+          <mat-form-field>
+            <input matInput [ngxMatDatetimePicker]="picker1" placeholder="" [(ngModel)]="range_end_time">
+            <mat-datepicker-toggle matSuffix [for]="$any(picker1)"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #picker1 [showSeconds]="true" [enableMeridian]="true">
+            </ngx-mat-datetime-picker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="data-table">
+        <div class="table-div mat-elevation-z8">
+          <table mat-table matTableExporter  [dataSource]="dataSource" #exporter="matTableExporter" matSort>
+
+            <ng-container matColumnDef="Source_ip">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Source IP </th>
+              <td mat-cell *matCellDef="let row"> {{row.Source_ip}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Source_port">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Source Port </th>
+              <td mat-cell *matCellDef="let row"> {{row.Source_port}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Destination_ip">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Dest. IP </th>
+              <td mat-cell *matCellDef="let row"> {{row.Destination_ip}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Destination_port">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Dest. Port </th>
+              <td mat-cell *matCellDef="let row"> {{row.Destination_port}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="protocol_l3">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> l3 </th>
+              <td mat-cell *matCellDef="let row"> {{row.l3}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="protocol_l4">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> l4 </th>
+              <td mat-cell *matCellDef="let row"> {{row.l4}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="Protocol_l7">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> l7 </th>
+              <td mat-cell *matCellDef="let row"> {{row.l7}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Category">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Category </th>
+              <td mat-cell *matCellDef="let row"> {{row.category_name}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="calling_number">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> calling_number</th>
+              <td mat-cell *matCellDef="let row"> {{row.calling_number}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="called_number">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> called_number </th>
+              <td mat-cell *matCellDef="let row"> {{row.called_number}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="pkts_sent">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> pkts sent </th>
+              <td mat-cell *matCellDef="let row"> {{row.Packets_sent}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="pkts_rcvd">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> pkts rcvd </th>
+              <td mat-cell *matCellDef="let row"> {{row.Packets_received}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="bytes_sent">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> bytes sent/s </th>
+              <td mat-cell *matCellDef="let row"> {{row.Bytes_sent}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="bytes_rcvd">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> bytes rcvd/s </th>
+              <td mat-cell *matCellDef="let row"> {{row.Bytes_received}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="start_time">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> start time </th>
+              <td mat-cell *matCellDef="let row"> {{row.Start_time | date:"medium"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="end_time">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> end time </th>
+              <td mat-cell *matCellDef="let row"> {{row.End_time | date:"medium"}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="oprt_id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> oprt id </th>
+              <td mat-cell *matCellDef="let row"> {{row.operator_id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="area_id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> area id </th>
+              <td mat-cell *matCellDef="let row"> {{row.area_id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="subscriber_id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> subscriber_id </th>
+              <td mat-cell *matCellDef="let row"> {{row.subscriber_id}} </td>
+            </ng-container>
+
+            <!-- Commulative Columns -->
+            <ng-container matColumnDef="Mb_sent">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> MB Sent </th>
+              <td mat-cell *matCellDef="let row"> {{row.Mb_sent/1000000}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Mb_Rcvd">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> MB Rcvd </th>
+              <td mat-cell *matCellDef="let row"> {{row.Mb_Rcvd/1000000}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Pkts_sent">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Pkts Sent </th>
+              <td mat-cell *matCellDef="let row"> {{row.Pkts_sent}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Pkts_Rcvd">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Pkts Rcvd </th>
+              <td mat-cell *matCellDef="let row"> {{row.Pkts_Rcvd}} </td>
+            </ng-container>
+            <ng-container matColumnDef="data_rate_ul">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Data Rate(UL) </th>
+              <td mat-cell *matCellDef="let row"> {{row.data_rate_ul}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="data_rate_dl">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Data Rate(DL) </th>
+              <td mat-cell *matCellDef="let row"> {{row.data_rate_dl}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Percetage_connection">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Percentage Connection </th>
+              <td mat-cell *matCellDef="let row"> {{row.Percetage_connection}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ip_usage">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Usage (MB)</th>
+              <td mat-cell *matCellDef="let row"> {{row.ip_usage/1000000}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        </div>
+        <div class="mat-elevation-z8 " style="text-align: center;">
+          <button mat-raised-button class="grey botto-button" (click)="exporter.exportTable('csv', {fileName:'IPDR_table'} )"> Export CSV</button>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <div class="row ">
+    <div class="col-sm-3 background-color " style="text-align:left" >Status</div>
+    <div class="col-sm-6 background-color" ></div>
+    <div class="col-sm-3 background-color" >Screen : Existing-Report</div>
+  </div>
+</div>

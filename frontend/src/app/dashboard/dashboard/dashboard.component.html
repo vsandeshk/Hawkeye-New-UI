@@ -1,0 +1,27 @@
+<mat-toolbar color="primary" class="app-header">
+  <span class="toolbar-spacer"><img class="logo" src="./assets/logohawk.png" alt="Hawkeye"> </span>
+  <span>HAWKEYE-100</span>
+  <span><button mat-button (click)="logout()">
+      <!-- <mat-icon>exit_to_app</mat-icon> -->
+      <img class="logout" src="./assets/logout.png" alt="Logout"> 
+    </button> </span>
+</mat-toolbar>
+
+<div  class="container-fluid" fxLayout="row wrap" fxLayoutAlign="center center" >
+
+  <mat-card class="main-card">
+
+  <button mat-raised-button routerLink="/ipdr" class="dashboard-card font" color="primary"><h1>IPDR</h1></button>
+  <button mat-raised-button routerLink="/liveipdr" class="dashboard-card font" color="primary"><h1>Live IPDR</h1></button>
+  <button mat-raised-button routerLink="/policy" class="dashboard-card font" color="primary"><h1>Policy Management</h1></button>
+  <br>
+  <button mat-raised-button routerLink="/target-creation" class="dashboard-card font" color="primary"><h1>Target Creation</h1></button>
+  <button mat-raised-button routerLink="/email" class="dashboard-card font" color="primary"><h1>Email Analysis</h1></button>
+  <button mat-raised-button routerLink="/http" class="dashboard-card font" color="primary"><h1>HTTP Analysis</h1></button>
+  <br>
+  <button mat-raised-button routerLink="/dns" class="dashboard-card font" color="primary"><h1>DNS Analysis</h1></button>
+  <button mat-raised-button routerLink="/location" class="dashboard-card font" color="primary"><h1>Location Analysis</h1></button>
+
+  <button mat-raised-button routerLink="/activity"  class="dashboard-card font" color="primary"><h1>Activity Log</h1></button>
+  </mat-card>
+</div>

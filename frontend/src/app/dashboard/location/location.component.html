@@ -1,0 +1,154 @@
+<div class="snav-container" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="app-header">
+    <span class="toolbar-spacer"><img class="logo" src="./assets/logohawk.png" alt="Hawkeye" (click)="!snav.toggle()">
+    </span>
+    <h1 class="app-name">Location Analysis</h1>
+    <span>
+      <button mat-button routerLink="/dashboard">
+        <mat-icon  style="font-size: 40px;">reply</mat-icon>
+      </button>
+      <button mat-button (click)="logout()">
+        <!-- <mat-icon>exit_to_app</mat-icon> -->
+        <img class="logout" src="./assets/logout.png" alt="Logout"> 
+
+      </button>
+    </span>
+  </mat-toolbar>
+
+
+  <form [formGroup]="topFormGroup">
+
+    <div class="row mat-elevation-z8 search-header">
+
+      <div class="col left">
+        <span> <b>From:</b> </span>
+        <!-- From: -->
+        <mat-form-field>
+          <input matInput [ngxMatDatetimePicker]="picker" placeholder="" formControlName="from">
+          <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #picker [enableMeridian]="true">
+          </ngx-mat-datetime-picker>
+        </mat-form-field>
+      </div>
+      <!-- <h1 class="">Search</h1> -->
+      <div class="col">
+        <mat-form-field class="top-search-field">
+          <input matInput placeholder="Search" formControlName="keyword">
+        </mat-form-field>
+        <button mat-raised-button (click)="topBarsearch()"> Search</button>
+
+      </div>
+      <div class="col right">
+        <span> <b>To:</b> </span>
+        <!-- To: -->
+        <mat-form-field>
+          <input matInput [ngxMatDatetimePicker]="picker1" placeholder="" formControlName="to">
+          <mat-datepicker-toggle matSuffix [for]="$any(picker1)"></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #picker1 [enableMeridian]="true">
+          </ngx-mat-datetime-picker>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+
+
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav opened="true" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <div class="side-content">
+        <!-- <mat-form-field class="side-field" appearance="standard">
+          <mat-label>Select Analysis Type</mat-label>
+          <mat-select (selectionChange)="onScreenChange()" [(ngModel)]="analysis_type">
+            <mat-option value="Email">Email</mat-option>
+            <mat-option value="HTTP">HTTP</mat-option>
+            <mat-option value="DNS">DNS</mat-option>
+            <mat-option value="Location Analysis">Location Analysis</mat-option>
+          </mat-select>
+        </mat-form-field> -->
+        <p>Details</p>
+        <form [formGroup]="formGroup">
+          <mat-form-field class="side-field">
+            <input matInput placeholder="Network ID" formControlName="network_id">
+          </mat-form-field>
+          <mat-form-field class="side-field">
+            <input matInput placeholder="Customer ID" formControlName="customer_id">
+          </mat-form-field>
+          <mat-form-field class="side-field">
+            <input matInput placeholder="Public IP" formControlName="public_ip">
+          </mat-form-field>
+          <mat-form-field class="side-field">
+            <input matInput placeholder="Private IP" formControlName="private_ip">
+          </mat-form-field>
+          <!-- <mat-form-field>
+            <input matInput [ngxMatDatetimePicker]="from" placeholder="From" formControlName="from">
+            <mat-datepicker-toggle matSuffix [for]="$any(from)"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #from [enableMeridian]="true">
+            </ngx-mat-datetime-picker>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput [ngxMatDatetimePicker]="to" placeholder="To" formControlName="to">
+            <mat-datepicker-toggle matSuffix [for]="$any(to)"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #to [enableMeridian]="true">
+            </ngx-mat-datetime-picker>
+          </mat-form-field> -->
+        </form>
+
+        <button mat-raised-button class="grey side-button"> Search</button>
+        <button mat-raised-button class="grey side-button" (click)="clearForm();"> Clear </button>
+        <!-- <button mat-raised-button (click)="topBarsearch()"> Search</button> -->
+        <!-- <button mat-raised-button (click)="getAllData()" class="grey side-button"> {{ipdr_buttons.clear}}</button> -->
+
+      </div>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+      <div class="data-table">
+        <div class="table-div mat-elevation-z8">
+          <!-- <h1> Table will be here </h1> -->
+          <table mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" matSort>
+            <!-- <table> -->
+
+            <ng-container matColumnDef="public_ip">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Public IP </th>
+              <td mat-cell *matCellDef="let row"> {{row.public_ip}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="private_ip">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Private IP </th>
+              <td mat-cell *matCellDef="let row"> {{row.private_ip}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="network_id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Network ID </th>
+              <td mat-cell *matCellDef="let row"> {{row.network_id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="customer_id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer ID </th>
+              <td mat-cell *matCellDef="let row"> {{row.customer_id}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <!-- <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="tableRowClick(row)"></tr>
+
+          </table>
+        </div>
+        <div class="export-btn mat-elevation-z8">
+          <button mat-raised-button class="grey botto-button export" (click)="exportElmToExcel()"> Export Data</button>
+        </div>
+      </div>
+      <div class="">
+          <agm-map [latitude]="cords.lat" [longitude]="cords.long">
+    <!-- <agm-marker [latitude]="cords.lat" [longitude]="cords.long"></agm-marker> -->
+    <agm-marker [latitude]="cords.lat" [longitude]="cords.long" (markerClick)="fetchMarkerInfo()"></agm-marker> 
+          </agm-map>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <!-- <label><b>Screen : : Location</b></label> -->
+  <div class="row ">
+    <div class="col-sm-3 background-color " style="text-align:left" >Status</div>
+    <div class="col-sm-6 background-color" ></div>
+    <div class="col-sm-3 background-color" >Screen Name: Location</div>
+  </div>
+</div>

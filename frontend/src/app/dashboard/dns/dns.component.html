@@ -1,0 +1,175 @@
+<div class="snav-container" [class.is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="app-header">
+    <span class="toolbar-spacer"><img class="logo" src="./assets/logohawk.png" alt="Hawkeye" (click)="!snav.toggle()"> </span>
+    <h1 class="app-name">DNS Analysis</h1>
+    <span>
+      <button mat-button routerLink="/dashboard">
+        <mat-icon  style="font-size: 40px;">reply</mat-icon>
+      </button>
+      <button mat-button (click)="logout()">
+        <!-- <mat-icon>exit_to_app</mat-icon> -->
+        <img class="logout" src="./assets/logout.png" alt="Logout"> 
+      </button>
+    </span>
+  </mat-toolbar>
+  <form [formGroup]="topFormGroup">
+
+    <div class="row mat-elevation-z8 search-header">
+
+      <div class="col left">
+        <span> <b>From:</b> </span>        <!-- From: -->
+        <mat-form-field>
+          <input matInput [ngxMatDatetimePicker]="picker" placeholder="" formControlName="from">
+          <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #picker [enableMeridian]="true">
+          </ngx-mat-datetime-picker>
+        </mat-form-field>
+      </div>
+      <!-- <h1 class="">Search</h1> -->
+      <div class="col">
+        <mat-form-field class="top-search-field">
+          <input matInput placeholder="Search" formControlName="keyword">
+        </mat-form-field>
+        <button mat-raised-button (click)="topBarsearch()"> Search</button>
+
+      </div>
+      <div class="col right">
+        <span> <b>To:</b> </span>        <!-- To: -->
+        <mat-form-field>
+          <input matInput [ngxMatDatetimePicker]="picker1" placeholder="" formControlName="to">
+          <mat-datepicker-toggle matSuffix [for]="$any(picker1)"></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #picker1 [enableMeridian]="true">
+          </ngx-mat-datetime-picker>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav opened="true" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <div class="side-content">
+        <mat-form-field appearance="standard" class="side-field">
+          <mat-label>Screen</mat-label>
+          <mat-select [(ngModel)]="screen">
+            <mat-option value="dns">DNS</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <p>Details</p>
+        <form [formGroup]="formGroup">
+          <mat-form-field class="side-field">
+            <input matInput placeholder="URL" formControlName="url">
+          </mat-form-field>
+          <mat-form-field class="side-field">
+            <input matInput placeholder="Access Count" formControlName="access_count">
+          </mat-form-field>
+          <mat-form-field class="side-field">
+            <input matInput [ngxMatDatetimePicker]="last_accessed" placeholder="Last Accessed" formControlName="last_accessed">
+            <mat-datepicker-toggle matSuffix [for]="$any(last_accessed)"></mat-datepicker-toggle>
+            <ngx-mat-datetime-picker #last_accessed [enableMeridian]="true">
+            </ngx-mat-datetime-picker>
+          </mat-form-field>
+          <mat-form-field appearance="standard" class="side-field">
+            <mat-label>Category 1</mat-label>
+            <mat-select formControlName="category1">
+              <mat-option *ngFor="let field of categories | keyvalue" [value]="field.key">
+                {{field.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="standard" class="side-field">
+            <mat-label>Category 2</mat-label>
+            <mat-select formControlName="category2">
+              <mat-option *ngFor="let field of categories | keyvalue" [value]="field.key">
+                {{field.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="standard" class="side-field">
+            <mat-label>Category 3</mat-label>
+            <mat-select formControlName="category3">
+              <mat-option *ngFor="let field of categories | keyvalue" [value]="field.key">
+                {{field.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+
+        <!-- <button mat-raised-button class="grey side-button" (click)="searchData()"> Search</button> -->
+        <button mat-raised-button class="grey side-button" (click)="clearForm()"> Clear </button>
+      </div>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+
+      <div class="data-table">
+        <div class="table-div mat-elevation-z8">
+          <table mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" matSort>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="url">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> URL </th>
+              <td mat-cell *matCellDef="let row"> {{row.url}} </td>
+            </ng-container>
+
+            <!-- Progress Column -->
+            <ng-container matColumnDef="access_count">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Access Count </th>
+              <td mat-cell *matCellDef="let row"> {{row.access_count}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="last_accessed">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Accessed </th>
+              <td mat-cell *matCellDef="let row"> {{row.last_accessed | date: "medium"}} </td>
+            </ng-container>
+
+            <!-- Fruit Column -->
+            <ng-container matColumnDef="category1">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Category 1 </th>
+              <td mat-cell *matCellDef="let row"> {{categories[row.category1]}} </td>
+            </ng-container>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="category2">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Category 2 </th>
+              <td mat-cell *matCellDef="let row"> {{categories[row.category2]}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="category3">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Category 3 </th>
+              <td mat-cell *matCellDef="let row"> {{categories[row.category3]}} </td>
+            </ng-container>
+
+
+            <!-- <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="tableRowClick(row)"></tr>
+
+          </table>
+        </div>
+
+        <div class="export-btn mat-elevation-z8">
+          <button mat-raised-button class="grey botto-button" (click)="exporter.exportTable('csv', {fileName:'DNS_table'} )"> Export CSV</button>
+        </div>
+      </div>
+      <div class="access-count-div">
+        <div class="mat-elevation-z8 chart-area">
+          <br>
+          <span>Access Count</span>
+          <div class="myChart">
+            <canvas id="myChart" class="chart-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <!-- <label><b>Screen : : DNS</b></label> -->
+  <div class="row ">
+    <div class="col-sm-3 background-color " style="text-align:left" >Status</div>
+    <div class="col-sm-6 background-color" ></div>
+    <div class="col-sm-3 background-color" >Screen Name: DNS</div>
+  </div>
+</div>

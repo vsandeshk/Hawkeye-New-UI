@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="app-header">
+  <span class="toolbar-spacer"><img class="logo" src="./assets/logohawk.png" alt="Hawkeye"> </span>
+  <span class="app-name">HAWKEYE-100</span>
+  <span></span>
+</mat-toolbar>
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Log In</mat-card-title>
+      </mat-card-header>
+
+      <form class="login-form" [formGroup]="formGroup" (ngSubmit)="login()">
+        <mat-card-content>
+          <mat-form-field class="login-full-width">
+            <input matInput placeholder="Username" formControlName="username">
+          </mat-form-field>
+
+          <mat-form-field class="login-full-width">
+            <input matInput type="password" placeholder="Password" formControlName="password">
+          </mat-form-field>
+        </mat-card-content>
+        <button mat-stroked-button type="submit" color="accent" class="btn-block">Login <mat-icon>lock_open</mat-icon></button>
+      </form>
+    </mat-card>
+
+  </div>
