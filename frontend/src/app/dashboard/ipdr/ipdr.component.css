@@ -97,7 +97,7 @@ mat-sidenav {
 
   overflow: auto;
   height: 400px;
-  background-color: #080d4f;
+  background-color: #0a0c30;
   color: white;
 
 }
@@ -105,10 +105,7 @@ mat-sidenav {
 .date-nav {
   background-color:#243361;
   color: white;
-
-  
 }
-
 .data-table {
   margin-left: 30px;
   margin-right: 30px;
@@ -155,7 +152,7 @@ mat-header-cell {
   color: white;
 }
 
-.grey {
+.side-button:hover  {
   position: relative;
   color:black;
   border-radius:8px;
@@ -180,7 +177,7 @@ mat-header-cell {
   font-size: 10px;
 }
 
-.side-button:hover {
+.grey{
   margin-top: 10px;
   position: relative;
   color: var(--textColor2);
@@ -193,6 +190,13 @@ mat-header-cell {
 
 
 .botto-button:hover {
+  /* position: relative;
+  color: var(--textColor2);
+  border-radius:8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-size: 400%;
+  background-position: 0% 0%; */
+  margin-top: 10px;
   position: relative;
   color: var(--textColor2);
   border-radius:8px;
