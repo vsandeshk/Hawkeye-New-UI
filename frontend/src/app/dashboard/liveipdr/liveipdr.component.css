@@ -1,169 +1,208 @@
-.left{
-    margin-top: 10px;
-    margin-left: 30px;
-  }
-  .right{
-    text-align: right;
-    margin-top: 10px;
-    margin-right: 30px;
-  }
+.left {
+  margin-top: 10px;
+  margin-left: 30px;
+}
+
+.right {
+  text-align: right;
+  margin-top: 10px;
+  margin-right: 30px;
+}
+
+.app-header {
+  background-color: #0a122a;
+  color: #edf0f3;
+  justify-content: space-between;
+  font-weight: bold;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+  margin-top: 10px;
+}
+
+.logout {
+  width: 40px;
+  height: auto;
+  margin-top: 10px;
+}
+
+.snav-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.is-mobile .snav-toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+h1.app-name {
+  margin-left: 8px;
+}
+
+.sidenav-container {
+  flex: 1;
+  background-color:#243361;
+
+}
+
+mat-sidenav {
+  width: 300px;
+  background-color:#243361;
+  color: white;
+
+}
+
+.side-content {
+  padding: 10%;
+}
+
+.is-mobile .sidenav-container {
+  flex: 1 0 auto;
+}
+
+.logo-card {
+  max-width: 400px;
+}
+
+.active-list-item {
+  color: #3F51B5 !important;
+}
+
+.table {
+  width: 300%;
+  background-color:#091643;
+  color: white;
+
+ 
+}
+
+.table-div {
+
+  overflow: auto;
+  height: 425px;
+  background-color:#091643;
+  color: white;
+
   
-  .app-header {
-    background-color: #e6e6e6;
-    color: black;
-    justify-content: space-between;
-    font-weight: bold;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
-  }
-  .logo{
-    width:60px;
-    height:auto;
-    margin-top:10px;
-  }
-  .logout{
-    width:40px;
-    height:auto;
-    margin-top:10px;
-  }
-  .snav-container {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .is-mobile .snav-toolbar {
-    position: fixed;
-    z-index: 2;
-  }
-  
-  h1.app-name {
-    margin-left: 8px;
-  }
-  
-  .sidenav-container {
-    flex: 1;
-  }
-  
-  mat-sidenav {
-    width: 300px;
-  }
-  
-  .side-content {
-    padding: 10%;
-  }
-  
-  .is-mobile .sidenav-container {
-    flex: 1 0 auto;
-  }
-  
-  .logo-card {
-    max-width: 400px;
-  }
-  
-  .active-list-item {
-    color: #3F51B5 !important;
-  }
-  
-  table {
-    width: 300%;
-  }
-  
-  .table-div {
-  
-    overflow: auto;
-    height: 480px;
-  
-  }
-  
-  .date-nav {
-    background-color: #fff;
-  }
-  
-  .data-table {
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 10px;
-  }
-  
-  .mat-form-field{
-    font-size: 14px;
-    /* width: 32%;
+
+}
+
+.date-nav {
+  background-color: #fff;
+}
+
+.data-table {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 10px;
+  border-color: #080d4f;
+  color: white;
+  background-color:#091643;
+
+}
+
+.mat-form-field {
+  font-size: 14px;
+  /* width: 32%;
     margin: 10px; */
-  }
-  
-  button {
-    font-size: 14px;
-    width: 35%;
-    margin: 10px;
-  }
-  
-  td, th {
-  
-    font-size: 14px;
-    color:black;
-  }
-  mat-header-cell {
-    justify-content: center;
-  }
-  
-  .mat-row:hover .mat-cell {
-    border-color: currentColor;
-  }
-  
-  
-  
-  .blue {
-    background-color: #3f51b5;
-    color: white;
-  }
-  
-  .grey {
-    background-color: #e6e6e6;
-  }
-  
-  .side-button {
-    margin-top: 10px;
-    width: 90%;
-  }
-  
-  .side-field {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    width: 40%;
-    height: 20px;
-    font-size: 10px;
-  }
-  
-  .side-button:hover {
-    background-color: #3f51b5;
-    color: white;
-  }
-  
-  
-  .botto-button:hover {
-    background-color: #3f51b5;
-    color: white;
-  }
-  
-  h2 {
-    margin-top: 20px;
-  }
-  .row{
-    width: 100%;
-   }
-   .background-color{
-     background-color: #e6e6e6;
-     padding: 10px;
-     font-family: Arial, Helvetica, sans-serif;
-     font-weight: bold;
-     text-align: right;
-     
-   }
+}
+
+button {
+  font-size: 14px;
+  width: 35%;
+  margin: 10px;
+}
+
+td,
+th {
+
+  font-size: 14px;
+  color: white;
+  background-color:#091643;
+
+}
+
+mat-header-cell {
+  justify-content: center;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+
+
+
+.blue {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.grey {
+  background-color: #e6e6e6;
+}
+.exportDiv{
+  background-color:#243361;
+}
+.side-button {
+  margin-top: 10px;
+  width: 90%;
+}
+
+.side-field {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 40%;
+  height: 20px;
+  font-size: 10px;
+}
+
+.side-button:hover {
+  position: relative;
+  color: var(--textColor2);
+  border-radius:8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-size: 400%;
+  background-position: 0% 0%;
+}
+
+
+.botto-button:hover {
+  background-color: #3f51b5;
+  color: white;
+  position: relative;
+  color: var(--textColor2);
+  border-radius:8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-size: 400%;
+  background-position: 0% 0%;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+.row {
+  width: 100%;
+}
+
+.background-color {
+  background-color: #e6e6e6;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: right;
+
+}
