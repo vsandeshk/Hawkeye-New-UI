@@ -1,5 +1,5 @@
 .app-header {
-  background-color: #3b403d;
+  background-color:#243361;
   color: #ced4da;
   justify-content: space-between;
   font-weight: bold;
@@ -49,12 +49,12 @@ h1.app-name {
 
 .sidenav-container {
   flex: 1;
-  background-color: #3b403d;
+  background-color:#243361;
 }
 
 .mat-sidenav {
   width: 300px;
-  background-color: #3b403d;
+  background-color:#243361;
   color: #ced4da;
 }
 
@@ -112,7 +112,7 @@ mat-card {
 }
 
 .blue {
-  background-color: #3f51b5;
+  background-color:#0e1a32;
   color: white;
 }
 
@@ -126,12 +126,12 @@ mat-card {
 }
 
 .side-button:hover {
-  background-color: #3b403d;
+  background-color:#0e1a32;
   color: #ced4da
 }
 
 .botto-button:hover {
-  background-color: #3b403d;
+  background-color:#0e1a32;
   color: #ced4da;
   margin-bottom: 30px;
 }
@@ -145,8 +145,8 @@ h2 {
 }
 
 .background-color {
-  background-color: #3b403d;
-  border-color: #ced4da;
+  background-color:#243361;
+  border-color:#243361;
   color: #ced4da;
   padding: 10px;
   font-weight: bold;
@@ -154,49 +154,47 @@ h2 {
 }
 
 .table {
-  border-color: lighten(#313533, 5%);
+  border-color:#080d4f;
   color: #858d98;
 }
 
 .table-bordered {
-  border-color: #ced4da;
+  border-color:#0e1a32;
 }
 
-.table-dark {
-  background-color: #ced4da;
-  
+.table{
+  background-color:#091643;
 }
 
 th, td {
-  border-color: #ced4da;
+  border-color:#131d43;
   color: #ced4da;
-  background-color: #3b403d
+  background-color:#101d4e;
 }
 
 th {
   font-weight: 700;
   font-size: 15px;
 }
-
-/* // .table>:not(:last-child)>:last-child>* {
-   //   border-bottom-color: #3b403d;
-   // } */
+/* .table>:not(:last-child)>:last-child>* {
+  border-bottom-color:#0e1a32;
+ } */
 .table-striped>tbody>tr:nth-of-type(odd),
 .table-hover>tbody>tr:hover,
 .table .table-light {
-  --bs-table-accent-bg: #363a38;
+  --bs-table-accent-bg:#18275b;
   color: #858d98;
 }
 
 /* // table */
->:not(caption)>*>* {
-  background-color: #3b403d;
-}
+/* >:not(caption)>*>* {
+  background-color:#0e1a32;
+} */
 
 /* forms */
 .form-control {
   color: #ced4da;
-  background-color: lighten(#313533, 2%);
+  background-color: lighten(#080d4f, 2%);
   border: 1px solid #ced4da;
 }
 
@@ -204,13 +202,13 @@ th {
 
 /* // form-check */
 .form-check-input {
-  background-color: #3b403d;
+  background-color:#141a63;
   border-color: rgba(#ced4da, 0.25);
 }
 
 .form-check-input:checked {
-  background-color: #5156be;
-  border-color: #5156be;
+  background-color: #141a63;
+  border-color: #0e1a32;
 }
 
 ::ng-deep .mat-form-field-label {
@@ -228,43 +226,43 @@ th {
 
 /* // input group */
 .input-group-text {
-  background-color: #3b403d;
-  border-color: #3b403d;
+  background-color:#0e1a32;
+  border-color: #0e1a32;
   color: #ced4da;
 }
 
 .mat-option {
-  background-color: #3b403d;
-  border-color: #3b403d;
+  background-color:#18275b;
+  border-color:#0e1a32;
   color: #ced4da;
 }
 .mat-option:hover {
   background-color: #ced4da;
-  border-color: #3b403d;
+  border-color:#0e1a32;
   color: #3b403d;
 }
 
 .form-control:-webkit-file-upload-button {
-  background-color: #3b403d;
+  background-color: #141a63;
   color: #ced4da;
 }
 
 .form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
-  background-color: #3b403d;
+  background-color:#141a63;
 }
 
 .status-bar {
-  background-color: #3b403d;
+  background-color:#05071b;
   color: #ced4da;
 }
 
 .form-select {
   color: #adb5bd !important;
-  background-color: lighten(#313533, 2.5%);
-  border: 1px solid #3b403d;
+  background-color: lighten( #141a63, 2.5%);
+  border: 1px solid #141a63;
 }
 
 .export-div {
   text-align: center;
-  background-color: #3b403d;
+  background-color: #18275b;
 }
