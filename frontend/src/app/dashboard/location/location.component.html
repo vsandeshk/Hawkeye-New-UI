@@ -21,7 +21,7 @@
     <div class="row mat-elevation-z8 search-header">
 
       <div class="col left">
-        <span> <b>From:</b> </span>
+        <span> &nbsp; From: &nbsp;  </span>
         <!-- From: -->
         <mat-form-field>
           <input matInput [ngxMatDatetimePicker]="picker" placeholder="" formControlName="from">
@@ -35,11 +35,11 @@
         <mat-form-field class="top-search-field">
           <input matInput placeholder="Search" formControlName="keyword">
         </mat-form-field>
-        <button mat-raised-button (click)="topBarsearch()"> Search</button>
+        <button class="search-header-btn" mat-raised-button (click)="topBarsearch()"> Search</button>
 
       </div>
       <div class="col right">
-        <span> <b>To:</b> </span>
+        <span> &nbsp; To: &nbsp; </span>
         <!-- To: -->
         <mat-form-field>
           <input matInput [ngxMatDatetimePicker]="picker1" placeholder="" formControlName="to">
@@ -147,8 +147,13 @@
   </mat-sidenav-container>
   <!-- <label><b>Screen : : Location</b></label> -->
   <div class="row ">
-    <div class="col-sm-3 background-color " style="text-align:left" >Status</div>
+    <div class="col-sm-3 background-color " style="text-align:left;" > Status : </div>
     <div class="col-sm-6 background-color" ></div>
     <div class="col-sm-3 background-color" >Screen Name: Location</div>
   </div>
+  <!-- <div class="row ">
+    <div class="col-sm-3 background-color " style="text-align:left" >Status</div>
+    <div class="col-sm-6 background-color" ></div>
+    <div class="col-sm-3 background-color" >Screen Name: Location</div>
+  </div> -->
 </div>
