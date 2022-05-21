@@ -9,8 +9,8 @@
 }
 
 .app-header {
-  background-color: #e6e6e6;
-  color: black;
+  background-color:#0a122a;
+  color: white;
   justify-content: space-between;
   font-weight: bold;
   top: 0;
@@ -50,10 +50,12 @@ h1.app-name {
 
 .sidenav-container {
   flex: 1;
+  background-color: #243361;
 }
 
 mat-sidenav {
   width: 300px;
+
 }
 
 .side-content {
@@ -84,11 +86,16 @@ mat-sidenav {
 
   overflow: auto;
   height: 390px;
+  background-color: #080d4f;
+  color: white;
 
 }
 
 .date-nav {
-  background-color: #fff;
+  background-color:#243361;
+  color: white;
+
+  
 }
 
 .data-table {
@@ -107,6 +114,7 @@ button {
   font-size: 14px;
   width: 35%;
   margin: 10px;
+  /* background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%) */
 }
 
 /* td, th {
@@ -118,7 +126,8 @@ button {
 td, th {
   text-align:left;
   font-size: 14px;
-  color: #000;
+  color: white;
+  background-color: #080d4f;
 }
 
 mat-header-cell {
@@ -135,12 +144,14 @@ mat-header-cell {
 }
 
 .grey {
-  background-color: #e6e6e6;
+  background-color: #243361;
 }
 
 .side-button {
   margin-top: 10px;
   width: 90%;
+  color: white;
+  /* background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%) */
 }
 
 .side-field {
@@ -152,7 +163,7 @@ mat-header-cell {
 }
 
 .side-button:hover {
-  background-color: #3f51b5;
+  background-color: #243361;
   color: white;
 }
 
@@ -160,6 +171,7 @@ mat-header-cell {
 .botto-button:hover {
   background-color: #3f51b5;
   color: white;
+  background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%)
 }
 
 h2 {
@@ -168,11 +180,15 @@ h2 {
 .row{
   width: 100%;
  }
- .background-color{
-   background-color: #e6e6e6;
-   padding: 10px;
-   font-family: Arial, Helvetica, sans-serif;
-   font-weight: bold;
-   text-align: right;
+ .background-color {
+  background-color:#243361;
+  border-color:#243361;
+  color: #ced4da;
+  padding: 10px;
+  font-weight: bold;
+  text-align: right;
+}
 
- }
+.side-content{
+  background-color:#243361;
+}
