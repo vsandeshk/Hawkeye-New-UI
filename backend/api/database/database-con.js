@@ -3,7 +3,7 @@ var pool = mysql.createPool({
   // connectionLimit: 5,
   host: 'localhost',
   user: 'netrapter',
-  password: 'Khizsh18!',
+  password: 'hali1122',
   database: 'hawkeye100',
 });
 

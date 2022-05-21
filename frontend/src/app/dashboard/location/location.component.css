@@ -23,9 +23,15 @@
   border-style: outset;
   border-width: 0.5px;
 }
+<<<<<<< HEAD
+agm-map{
+    height: 300px
+    
+=======
 
 agm-map {
   height: 300px
+>>>>>>> 0ab36f175142e75517bdeb99e9d175a0c4986be0
 }
 
 .logo {
