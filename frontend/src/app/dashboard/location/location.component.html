@@ -138,7 +138,7 @@
         </div>
       </div>
       <div class="">
-          <agm-map [latitude]="cords.lat" [longitude]="cords.long">
+          <agm-map style="filter:grayscale(100%)" [latitude]="cords.lat" [longitude]="cords.long">
     <!-- <agm-marker [latitude]="cords.lat" [longitude]="cords.long"></agm-marker> -->
     <agm-marker [latitude]="cords.lat" [longitude]="cords.long" (markerClick)="fetchMarkerInfo()"></agm-marker> 
           </agm-map>

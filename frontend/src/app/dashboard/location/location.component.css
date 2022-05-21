@@ -23,9 +23,8 @@
   border-style: outset;
   border-width: 0.5px;
 }
-
-agm-map {
-  height: 300px
+agm-map{
+    height: 300px  
 }
 
 .logo {
@@ -101,10 +100,10 @@ mat-sidenav {
 
 table {
   width: 100%;
-  background-color:#243361;
+  background-color:#101d4e;
 }
 .data-table {
-  background-color:#091643;
+  background-color:#101d4e;
 }
 
 /* .date-nav {
