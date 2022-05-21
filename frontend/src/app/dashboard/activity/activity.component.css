@@ -1,6 +1,6 @@
 .app-header {
-  background-color:#243361;
-  color: #ced4da;
+  background-color:#0a122a;
+  color: #edf0f3;
   justify-content: space-between;
   font-weight: bold;
   top: 0;
@@ -86,12 +86,12 @@ table {
 }
 
 .mat-form-field {
-  font-size: 11px;
+  font-size: 100%;
   width: 100%;
 }
 
 button {
-  font-size: 14px;
+  font-size: 100%;
   width: 20%;
   margin: 10px;
 }
@@ -112,28 +112,40 @@ mat-card {
 }
 
 .blue {
-  background-color:#0e1a32;
+  background-color:linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
   color: white;
 }
 
 .grey {
-  background-color: #ced4da;
+  position: relative;
+  color: var(--textColor2);
+  border-radius:8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-size: 400%;
+  background-position: 0% 0%;
 }
 
 .side-button {
   width: 90%;
-  font-size: 14px;
+  font-size: 100%;
 }
 
 .side-button:hover {
-  background-color:#0e1a32;
-  color: #ced4da
+  position: relative;
+  color: var(--textColor2);
+  border-radius:8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-size: 400%;
+  background-position: 0% 0%;
 }
 
 .botto-button:hover {
-  background-color:#0e1a32;
-  color: #ced4da;
-  margin-bottom: 30px;
+  position: relative;
+  color: var(--textColor2);
+  border-radius:8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-size: 400%;
+  background-position: 0% 0%;
 }
 
 h2 {
@@ -174,7 +186,7 @@ th, td {
 
 th {
   font-weight: 700;
-  font-size: 15px;
+  font-size: 100%;
 }
 /* .table>:not(:last-child)>:last-child>* {
   border-bottom-color:#0e1a32;
@@ -197,8 +209,6 @@ th {
   background-color: lighten(#080d4f, 2%);
   border: 1px solid #ced4da;
 }
-
-
 
 /* // form-check */
 .form-check-input {
@@ -237,18 +247,9 @@ th {
   color: #ced4da;
 }
 .mat-option:hover {
-  background-color: #ced4da;
+  background-color: #31669b;
   border-color:#0e1a32;
-  color: #3b403d;
-}
-
-.form-control:-webkit-file-upload-button {
-  background-color: #141a63;
-  color: #ced4da;
-}
-
-.form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
-  background-color:#141a63;
+  color: #e1f0f6;
 }
 
 .status-bar {
