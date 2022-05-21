@@ -9,7 +9,7 @@
       </button>
       <button mat-button (click)="logout()">
         <!-- <mat-icon>exit_to_app</mat-icon> -->
-        <img class="logout" src="./assets/logout.png" alt="Logout"> 
+        <img class="logout" src="./assets/logout.png" alt="Logout">
       </button>
     </span>
   </mat-toolbar>
@@ -32,7 +32,7 @@
         <mat-form-field class="top-search-field">
           <input matInput placeholder="Search" formControlName="keyword">
         </mat-form-field>
-        <button mat-raised-button (click)="topBarsearch()"> Search</button>
+        <button mat-raised-button class="grey" (click)="topBarsearch()"> Search</button>
 
       </div>
       <div class="col right">
@@ -51,7 +51,7 @@
   <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav opened="true" #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <div class="side-content">
-        <mat-form-field class="side-field"  appearance="standard">
+        <mat-form-field class="side-field">
           <mat-label>Select Analysis Type</mat-label>
           <mat-select [(ngModel)]="analysis_type">
             <mat-option value="HTTP">HTTP</mat-option>
@@ -60,7 +60,7 @@
         <object data="http://www.emirates.com" width="600" height="400" >
           Error: Embedded data could not be displayed.
       </object>
-<!-- 
+<!--
       <iframe class="embed-responsive-item url-detail"  [src]=" cleanURL(onclick_url_detail)" allowfullscreen></iframe> -->
 
         <!--    <p>Details</p>
@@ -123,7 +123,7 @@
     <mat-sidenav-content>
 
       <div class="data-table">
-        <div class="table-div mat-elevation-z8" style="overflow-x:auto;">
+        <div class="table-div table table-bordered dt-responsive table-dark nowrap w-100 datatables mat-elevation-z8 " style="overflow-x:auto;">
           <table mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" matSort>
 
 
@@ -229,9 +229,8 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="tableRowClick(row)"></tr>
 
           </table>
-
         </div>
-        <div style="text-align: center;">
+        <div class="mat-elevation-z8 export-div">
           <button mat-raised-button class="grey botto-button" (click)="exporter.exportTable('csv', {fileName:'Http_table'} )"> Export CSV</button>
         </div>
 
@@ -239,9 +238,9 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
   <!-- <label><b>Screen : : HTTP</b></label> -->
-  <div class="row ">
-    <div class="col-sm-3 background-color " style="text-align:left" >Status</div>
+  <div class="row  status-bar">
+    <div class="col-sm-3 background-color " style="text-align:left; margin-left:10px" >Status</div>
     <div class="col-sm-6 background-color" ></div>
-    <div class="col-sm-3 background-color" >Screen Name: HTTP</div>
+    <div class="col-sm-2 background-color" >Screen Name: HTTP</div>
   </div>
 </div>

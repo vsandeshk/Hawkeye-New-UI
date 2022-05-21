@@ -8,7 +8,7 @@
       </button>
       <button mat-button (click)="logout()">
         <!-- <mat-icon>exit_to_app</mat-icon> -->
-        <img class="logout" src="./assets/logout.png" alt="Logout"> 
+        <img class="logout" src="./assets/logout.png" alt="Logout">
       </button>
     </span>
   </mat-toolbar>
@@ -23,7 +23,7 @@
             <mat-select formControlName="username">
               <mat-option *ngFor="let field of username" [value]="field">
                 {{field}}
-                </mat-option> 
+                </mat-option>
                 </mat-select>
           </mat-form-field>
           <mat-form-field>
@@ -52,7 +52,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <div class="data-table">
-        <div class="table-div mat-elevation-z8" style="overflow-x:auto;">
+        <div class="table-div table table-bordered dt-responsive table-dark nowrap w-100 datatables mat-elevation-z8" style="overflow-x:auto;">
           <table mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" matSort >
 
             <!-- ID Column -->
@@ -85,19 +85,20 @@
 
 
           </table>
-          
+
         </div>
-        <div class="mat-elevation-z8 " style="text-align: center;">
+        <div class="mat-elevation-z8 export-div" >
             <button mat-raised-button class="grey botto-button" (click)="exportElmToExcel()"> Export Data</button>
           </div>
 
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
+
   <!-- <label><b>Screen : : Activity Log</b></label> -->
-  <div class="row ">
-    <div class="col-sm-3 background-color " style="text-align:left" >Status</div>
+  <div class="row status-bar">
+    <div class="col-sm-3 background-color" style="text-align:left; margin-left:10px" >Status</div>
     <div class="col-sm-6 background-color" ></div>
-    <div class="col-sm-3 background-color" >Screen Name: Activity</div>
+    <div class="col-sm-2 background-color">Screen Name: Activity</div>
   </div>
 </div>
