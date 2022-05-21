@@ -55,6 +55,8 @@ h1.app-name {
 
 mat-sidenav {
   width: 300px;
+  background-color:#243361;
+  color: #ced4da;
 
 }
 
@@ -85,7 +87,7 @@ mat-sidenav {
 .table-div {
 
   overflow: auto;
-  height: 390px;
+  height: 400px;
   background-color: #080d4f;
   color: white;
 
@@ -102,6 +104,7 @@ mat-sidenav {
   margin-left: 30px;
   margin-right: 30px;
   margin-top: 10px;
+  background-color:#243361;
 }
 
 .mat-form-field{
@@ -144,11 +147,12 @@ mat-header-cell {
 }
 
 .grey {
-  background-color: #243361;
   position: relative;
   color:black;
   border-radius:8px;
-  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  /* background-color: #abe9cd;
+  background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%); */
+  background-image: linear-gradient(80deg, #96c8ec, #85abf2, #9fb9ea, #a3ccee, #5fd0fd, #224688);
   background-size: 400%;
   background-position: 0% 0%;
 }
@@ -156,12 +160,7 @@ mat-header-cell {
 .side-button {
   margin-top: 10px;
   width: 90%;
-  position: relative;
-  background-color: #3f51b5;
-  color: black;
-  background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%);
-  background-size: 400%;
-  background-position: 0% 0%;
+  
 }
 
 .side-field {
@@ -174,36 +173,21 @@ mat-header-cell {
 
 .side-button:hover {
   margin-top: 10px;
-  width: 90%;
   position: relative;
-  background-color: #3f51b5;
-  color: black;
-  background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%);
+  color: var(--textColor2);
+  border-radius:8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
   background-size: 400%;
   background-position: 0% 0%;
 
 }
 
-.botto-button{
-  background-color: #3f51b5;
-  margin-top: 10px;
-  width: 30%;
-  position: relative;
-  background-color: #3f51b5;
-  color: black;
-  background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%);
-  background-size: 400%;
-  background-position: 0% 0%;
 
-}
 .botto-button:hover {
-  background-color: #3f51b5;
-  margin-top: 10px;
-  width: 30%;
   position: relative;
-  background-color: #3f51b5;
-  color: black;
-  background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%);
+  color: var(--textColor2);
+  border-radius:8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
   background-size: 400%;
   background-position: 0% 0%;
 
@@ -227,3 +211,4 @@ h2 {
 .side-content{
   background-color:#243361;
 }
+
