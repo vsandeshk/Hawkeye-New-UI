@@ -2,9 +2,9 @@ var mysql = require('mysql2'); ///// database connection
 var pool = mysql.createPool({
   // connectionLimit: 5,
   host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'hawkeye100',
+  user: 'faizan',
+  password: 'Faizan@1122',
+  database: 'netraptor_2',
 });
 
 module.exports.query = function(getQuery, valuesArr, res) {

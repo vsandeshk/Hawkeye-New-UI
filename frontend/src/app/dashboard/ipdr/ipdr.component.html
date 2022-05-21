@@ -93,7 +93,7 @@
       </div>
 
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="topFrameDate">
       <div class="row mat-elevation-z8 date-nav">
         <div class="col left">
           <span> <b>From: </b> </span>
@@ -117,7 +117,7 @@
 
       <!-- main ipdr table -->
       <div class="data-table">
-        <div class="table-div mat-elevation-z8">
+        <div class="table-div table table-bordered dt-responsive table-dark nowrap w-100 datatables mat-elevation-z8" style="overflow-x:auto;">
           <table mat-table matTableExporter  [ngClass]="{'main-table' : btn_click=='', 'cr-table': btn_click!=''}" [dataSource]="dataSource" #exporter="matTableExporter" matSort>
 
             <ng-container matColumnDef="Source_ip">

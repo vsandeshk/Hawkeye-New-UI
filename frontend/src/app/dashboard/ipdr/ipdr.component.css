@@ -84,11 +84,16 @@ mat-sidenav {
 
   overflow: auto;
   height: 390px;
+  background-color: #033363;
+  color: white;
 
 }
 
 .date-nav {
-  background-color: #fff;
+  background-color:#0000CC;
+  color: white;
+  
+  
 }
 
 .data-table {
@@ -135,12 +140,13 @@ mat-header-cell {
 }
 
 .grey {
-  background-color: #e6e6e6;
+  background-color: #0000CC;
 }
 
 .side-button {
   margin-top: 10px;
   width: 90%;
+  color: white;
 }
 
 .side-field {
@@ -168,11 +174,14 @@ h2 {
 .row{
   width: 100%;
  }
- .background-color{
-   background-color: #e6e6e6;
-   padding: 10px;
-   font-family: Arial, Helvetica, sans-serif;
-   font-weight: bold;
-   text-align: right;
-
- }
+ .background-color {
+  background-color: #3b403d;
+  border-color: #ced4da;
+  color: #ced4da;
+  padding: 10px;
+  font-weight: bold;
+  text-align: right;
+}
+.side-content{
+  background-color: #033363;
+}
