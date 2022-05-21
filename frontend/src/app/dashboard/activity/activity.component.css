@@ -72,7 +72,7 @@ h1.app-name {
 }
 
 .active-list-item {
-  color: #3F51B5 !important;
+  color: #0e1643 !important;
 }
 
 table {
@@ -83,6 +83,8 @@ table {
   margin-left: 30px;
   margin-right: 30px;
   margin-top: 30px;
+  background-color: #080d4f;
+
 }
 
 .mat-form-field {
@@ -118,9 +120,11 @@ mat-card {
 
 .grey {
   position: relative;
-  color: var(--textColor2);
+  color:black;
   border-radius:8px;
-  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  /* background-color: #abe9cd;
+  background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%); */
+  background-image: linear-gradient(80deg, #96c8ec, #85abf2, #9fb9ea, #a3ccee, #5fd0fd, #224688);
   background-size: 400%;
   background-position: 0% 0%;
 }
@@ -158,7 +162,7 @@ h2 {
 
 .background-color {
   background-color:#243361;
-  border-color:#243361;
+  border-color:#0a0f1e;
   color: #ced4da;
   padding: 10px;
   font-weight: bold;
@@ -166,12 +170,12 @@ h2 {
 }
 
 .table {
-  border-color:#080d4f;
+  border-color:#090c34;
   color: #858d98;
 }
 
 .table-bordered {
-  border-color:#0e1a32;
+  border-color:#09142b;
 }
 
 .table{
