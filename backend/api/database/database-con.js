@@ -2,13 +2,8 @@ var mysql = require('mysql2'); ///// database connection
 var pool = mysql.createPool({
   // connectionLimit: 5,
   host: 'localhost',
-<<<<<<< HEAD
   user: 'faizan',
   password: 'Faizan@1122',
-=======
-  user: 'mehwish',
-  password: 'Mehwish@123',
->>>>>>> c84b24967592d0b175b742933cc907010661e3cc
   database: 'netraptor_2',
 });
 

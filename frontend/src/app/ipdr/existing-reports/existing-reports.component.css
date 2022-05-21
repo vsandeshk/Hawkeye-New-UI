@@ -45,6 +45,7 @@ h1.app-name {
 
 .sidenav-container {
   flex: 1;
+  background-color: red;
 }
 
 mat-sidenav {
