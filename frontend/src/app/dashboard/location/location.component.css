@@ -66,11 +66,12 @@ h1.app-name {
 
 .sidenav-container {
   flex: 1;
+  background-color:#243361;
 }
 
 mat-sidenav {
-  width: 350px;
-  background-color: #243361;
+  width: 300px;
+  background-color:#243361;
   color: #ced4da;
   /* margin-top: 30px; */
 }
@@ -81,8 +82,9 @@ mat-sidenav {
 
 .side-field {
   width: 100%;
-  font-size: 10px;
-  background-color: #18275b;
+  font-size: 14px;
+  /* background-color: #18275b; */
+  /* color: white; */
 }
 
 .is-mobile .sidenav-container {
@@ -127,6 +129,7 @@ table {
 
 .mat-form-field {
   font-size: 11px;
+  color: white;
   /* width: 100%; */
 }
 
@@ -156,16 +159,17 @@ mat-card {
   border-radius: 1px;
 }
 
-.blue {
+/* .blue {
   background-color: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
   color: white;
-}
+} */
 
 .grey {
   position: relative;
-  color: var(--textColor2);
+  /* color: var(--textColor2); */
+  color:black;
   border-radius: 8px;
-  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-image: linear-gradient(80deg, #96c8ec, #85abf2, #9fb9ea, #a3ccee, #5fd0fd, #224688);
   background-size: 400%;
   background-position: 0% 0%;
   /* margin-left: 40%; */
