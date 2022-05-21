@@ -79,14 +79,14 @@ export class BandwidthBarChartComponent implements AfterViewInit {
         legend: {
           labels: {
             fontStyle: 'bold',
-            fontColor: 'Black',
+            fontColor: 'White',
           }
         },
         scales: {
           yAxes: [{
             scaleLabel: {
               fontStyle: 'bold',
-              fontColor: 'Black',
+              fontColor: 'White',
               display: true,
               labelString: 'Data Rate (Bps) '
             }
@@ -94,7 +94,7 @@ export class BandwidthBarChartComponent implements AfterViewInit {
           xAxes: [{
             scaleLabel: {
               fontStyle: 'bold',
-              fontColor: 'Black',
+              fontColor: 'White',
               display: true,
               labelString: 'Application'
             }

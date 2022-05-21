@@ -221,8 +221,8 @@ th {
 }
 
 .form-check-input:checked {
-  background-color: #141a63;
-  border-color: #0e1a32;
+  background-color:#141a63;
+
 }
 
 ::ng-deep .mat-form-field-label {
