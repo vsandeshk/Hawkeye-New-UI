@@ -1,35 +1,36 @@
+<div class="main-popup-div">
 <h1 mat-dialog-title>Email Details</h1>
 <div mat-dialog-content>
   <ul>
-    <mat-form-field appearance="fill">
+    <mat-form-field >
       <mat-label>From</mat-label>
       <textarea matInput readonly [(ngModel)]="data.mailfrom"></textarea>
     </mat-form-field>
   </ul>
   <ul>
-    <mat-form-field appearance="fill">
+    <mat-form-field >
       <mat-label>To</mat-label>
       <textarea matInput readonly [(ngModel)]="data.mailto"></textarea>
     </mat-form-field>
   </ul>
   <ul>
-    <mat-form-field appearance="fill">
+    <mat-form-field >
       <mat-label> Subject </mat-label>
       <textarea class="sub" matInput readonly [(ngModel)]="data.subject"></textarea>
     </mat-form-field>
   </ul>
   <ul>
-    <mat-form-field appearance="fill" *ngIf="(data.filename == '')">
+    <mat-form-field  *ngIf="(data.filename == '')">
       <mat-label> Attachment </mat-label>
       <textarea matInput readonly>{{"This Email has no Attachment"}}</textarea>
     </mat-form-field>
-    <mat-form-field appearance="fill" *ngIf="(data.filename != '')">
+    <mat-form-field  *ngIf="(data.filename != '')">
       <mat-label> Attachment </mat-label>
       <textarea matInput readonly>{{"This Email has Attachment"}}</textarea>
     </mat-form-field>
   </ul>
   <ul>
-    <mat-form-field appearance="fill">
+    <mat-form-field >
       <mat-label> Body </mat-label>
       <textarea class="sub" matInput readonly [(ngModel)]="data.body"></textarea>
     </mat-form-field>
@@ -39,4 +40,5 @@
 <div mat-dialog-actions>
   <button mat-button class="grey botto-button" (click)="onNoClick()">Close</button>
   <!-- <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button> -->
+</div>
 </div>

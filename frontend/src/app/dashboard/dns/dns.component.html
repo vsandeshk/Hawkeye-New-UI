@@ -8,7 +8,7 @@
       </button>
       <button mat-button (click)="logout()">
         <!-- <mat-icon>exit_to_app</mat-icon> -->
-        <img class="logout" src="./assets/logout.png" alt="Logout"> 
+        <img class="logout" src="./assets/logout.png" alt="Logout">
       </button>
     </span>
   </mat-toolbar>
@@ -151,7 +151,7 @@
           </table>
         </div>
 
-        <div class="export-btn mat-elevation-z8">
+        <div class="mat-elevation-z8 export-div">
           <button mat-raised-button class="grey botto-button" (click)="exporter.exportTable('csv', {fileName:'DNS_table'} )"> Export CSV</button>
         </div>
       </div>
@@ -167,8 +167,8 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
   <!-- <label><b>Screen : : DNS</b></label> -->
-  <div class="row ">
-    <div class="col-sm-3 background-color " style="text-align:left" >Status</div>
+  <div class="row status-bar">
+    <div class="col-sm-3 background-color "  style="text-align:left; margin-left:10px" >Status</div>
     <div class="col-sm-6 background-color" ></div>
     <div class="col-sm-3 background-color" >Screen Name: DNS</div>
   </div>
