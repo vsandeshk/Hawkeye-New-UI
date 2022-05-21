@@ -23,6 +23,17 @@
   border-style: outset;
   border-width: 0.5px;
 }
+.search-header-btn{
+  position: relative;
+  /* color: var(--textColor2); */
+  color:black;
+  border-radius: 8px;
+  background-image: linear-gradient(80deg, #96c8ec, #85abf2, #9fb9ea, #a3ccee, #5fd0fd, #224688);
+  background-size: 400%;
+  background-position: 0% 0%;
+  width: 20%;
+  /* height: 40px; */
+}
 agm-map{
     height: 300px  
 }
