@@ -9,7 +9,7 @@
       </button>
       <button mat-button (click)="logout()">
         <!-- <mat-icon>exit_to_app</mat-icon> -->
-        <img class="logout" src="./assets/logout.png" alt="Logout"> 
+        <img class="logout" src="./assets/logout.png" alt="Logout">
 
       </button>
     </span>
@@ -210,7 +210,7 @@
         </div> -->
 
       <div class="data-table">
-        <div class="table-div mat-elevation-z8">
+        <div class="table-div table table-bordered dt-responsive table-dark nowrap w-100 datatables mat-elevation-z8 ">
           <table mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" matSort>
 
             <!-- <ng-container matColumnDef="source_id">
