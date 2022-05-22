@@ -1,10 +1,10 @@
 var mysql = require('mysql2'); ///// database connection
 var pool = mysql.createPool({
   // connectionLimit: 5,
-  host: 'localhost',
-  user: 'faizan',
-  password: 'Faizan@1122',
-  database: 'netraptor_2',
+  host: '10.11.12.13',
+  user: 'root',
+  password: 'Faqt101120#',
+  database: 'netraptor',
 });
 
 module.exports.query = function(getQuery, valuesArr, res) {
