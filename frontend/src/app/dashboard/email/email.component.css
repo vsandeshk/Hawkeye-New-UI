@@ -1,5 +1,5 @@
 .app-header {
-  background-color: #3b403d;
+  background-color:#121446;
   color: #ced4da;
   justify-content: space-between;
   font-weight: bold;
@@ -12,9 +12,9 @@
 
 .search-header {
   margin-top: 2px;
-  background-color: #3b403d;
+  background-color:#2051a5;
   color: #ced4da;
-  border-color: #ced4da;
+ 
   /* justify-content: space-between; */
   /*  font-weight: bold;*/
   top: 0;
@@ -62,12 +62,13 @@ h1.app-name {
 
 .sidenav-container {
   flex: 1;
-  background-color: #3b403d;
+  background-color:#2051a5;
 }
 
 .mat-sidenav {
   width: 300px;
-  background-color: #3b403d;
+  /* background-color:#243361; */
+  background-color:#2051a5;
   color: #ced4da;
 }
 
@@ -104,14 +105,21 @@ table {
 }
 
 .table-div {
+  font-size: 100%;
   overflow: auto;
-  height: 390px;
+  height: 400px;
+  background-color: #121446;
+  color:#121446;
+
 }
 
 .data-table {
   margin-left: 30px;
+  
   margin-right: 30px;
-  margin-top: 30px;
+  margin-top: 10px;
+  /* background-color:#243361; */
+  background-color:#2051a5;
 }
 
 .mat-form-field {
@@ -136,14 +144,10 @@ button {
 }
 
 td, th {
-  text-align: left;
-  font-size: 14px;
-  color: black;
-  height: 10px;
-  white-space: normal;
-  word-wrap: break-word;
-  max-width: 300px;
-  min-width: 300px;
+  text-align:left;
+  font-size: 100%;
+  color: #ced4da;
+  background-color: #121446;
 }
 
 /* .hh{
@@ -170,11 +174,17 @@ mat-card {
 
 .blue {
   background-color: #3f51b5;
-  color: white;
+  color: #ced4da;
 }
 
 .grey {
-  background-color: #e6e6e6;
+  margin-top: 10px;
+  position: relative;
+  color: var(--textColor2);
+  border-radius:8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-size: 400%;
+  background-position: 0% 0%;
 }
 
 .grey:hover {
@@ -196,14 +206,25 @@ mat-card {
   min-width: 500px;
 } */
 .side-button:hover {
-  background-color: #ced4da;
-  color: #3b403d;
+  position: relative;
+  color:black;
+  border-radius:8px;
+  /* background-color: #abe9cd;
+  background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%); */
+  background-image: linear-gradient(80deg, #96c8ec, #85abf2, #9fb9ea, #a3ccee, #5fd0fd, #224688);
+  background-size: 400%;
+  background-position: 0% 0%;
 }
 
 
 .botto-button:hover {
-  background-color: #ced4da;
-  color: #3b403d;
+  margin-top: 10px;
+  position: relative;
+  color: var(--textColor2);
+  border-radius:8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-size: 400%;
+  background-position: 0% 0%;
 }
 
 h2 {
@@ -215,8 +236,8 @@ h2 {
 }
 
 .background-color {
-  background-color: #3b403d;
-  border-color: #ced4da;
+  background-color:#2051a5;
+  border-color:#243361;
   color: #ced4da;
   padding: 10px;
   font-weight: bold;
@@ -224,7 +245,7 @@ h2 {
 }
 
 form{
-  background-color: #3b403d;
+  background-color:#2051a5;
 }
 
 .table {
@@ -241,9 +262,10 @@ form{
 }
 
 th, td {
-  border-color: #ced4da;
+  text-align:left;
+  font-size: 100%;
   color: #ced4da;
-  background-color: #3b403d
+  background-color: #121446;
 }
 
 th {
@@ -305,38 +327,38 @@ th {
 }
 
 .mat-option {
-  background-color: #3b403d;
-  border-color: #3b403d;
+  background-color:#18275b;
+  border-color:#0e1a32;
   color: #ced4da;
 }
 
 .mat-option:hover {
-  background-color: #ced4da;
-  border-color: #3b403d;
-  color: #3b403d;
+  background-color: #31669b;
+  border-color:#0e1a32;
+  color: #e1f0f6;
 }
 
 .form-control:-webkit-file-upload-button {
-  background-color: #3b403d;
+  background-color:#2051a5;
   color: #ced4da;
 }
 
 .form-control:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
-  background-color: #3b403d;
+  background-color:#2051a5;
 }
 
 .status-bar {
-  background-color: #3b403d;
+  background-color:#2051a5;
   color: #ced4da;
 }
 
 .form-select {
   color: #adb5bd !important;
-  background-color: lighten(#313533, 2.5%);
-  border: 1px solid #3b403d;
+  background-color:#2051a5;
+
 }
 
 .export-div {
   text-align: center;
-  background-color: #3b403d;
+  background-color:#2051a5;
 }

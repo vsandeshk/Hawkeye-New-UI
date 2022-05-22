@@ -1,6 +1,6 @@
 .app-header {
-  background-color: #0a122a;
-  color: #edf0f3;
+  background-color:#121446;
+  color: #ced4da;
   justify-content: space-between;
   font-weight: bold;
   top: 0;
@@ -43,12 +43,12 @@ h1.app-name {
 
 .sidenav-container {
   flex: 1;
-  background-color: #243361;
+  background-color:#2051a5;
 }
 
 mat-sidenav {
   width: 300px;
-  background-color: #243361;
+  background-color:#2051a5;
   color: #ced4da;
 }
 
@@ -79,17 +79,20 @@ table {
 
 .table-div {
 
+  font-size: 100%;
   overflow: auto;
-  height: 455px;
-  border-color:#090c34;
-  color: #858d98;
+  height: 400px;
+  background-color: #121446;
+  color:#121446;
 
 }
 
 .data-table {
   margin-left: 30px;
   margin-right: 30px;
-  margin-top: 30px;
+  margin-top: 10px;
+  /* background-color:#243361; */
+  background-color:#2051a5;
 }
 
 .mat-form-field {
@@ -115,11 +118,10 @@ button {
 
 td,
 th {
-  text-align: left;
-  font-size: 14px;
-  border-color:#131d43;
+  text-align:left;
+  font-size: 100%;
   color: #ced4da;
-  background-color:#101d4e;
+  background-color: #121446;
 }
 
 .mat-row:hover .mat-cell {
@@ -135,14 +137,15 @@ mat-card {
 
 .blue {
   background-color: #3f51b5;
-  color: white;
+  color: #ced4da;
 }
 
 .grey {
+  margin-top: 10px;
   position: relative;
-  color: black;
-  border-radius: 8px;
-  background-image: linear-gradient(80deg, #96c8ec, #85abf2, #9fb9ea, #a3ccee, #5fd0fd, #224688);
+  color: var(--textColor2);
+  border-radius:8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
   background-size: 400%;
   background-position: 0% 0%;
 }
@@ -163,9 +166,10 @@ mat-card {
 
 
 .botto-button:hover {
+  margin-top: 10px;
   position: relative;
   color: var(--textColor2);
-  border-radius: 8px;
+  border-radius:8px;
   background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
   background-size: 400%;
   background-position: 0% 0%;
@@ -180,11 +184,10 @@ h2 {
 }
 
 .background-color {
-  background-color: #243361;
-  border-color: #0a0f1e;
+  background-color:#2051a5;
+  border-color:#243361;
   color: #ced4da;
   padding: 10px;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-align: right;
 
