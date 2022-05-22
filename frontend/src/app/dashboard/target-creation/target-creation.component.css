@@ -1,6 +1,6 @@
 .app-header {
-  background-color: #e6e6e6;
-  color: black;
+  background-color: #0a122a;
+  color: #edf0f3;
   justify-content: space-between;
   font-weight: bold;
   top: 0;
@@ -9,16 +9,19 @@
   z-index: 2;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
 }
-.logo{
-  width:60px;
-  height:auto;
-  margin-top:10px;
+
+.logo {
+  width: 60px;
+  height: auto;
+  margin-top: 10px;
 }
-.logout{
-  width:40px;
-  height:auto;
-  margin-top:10px;
+
+.logout {
+  width: 40px;
+  height: auto;
+  margin-top: 10px;
 }
+
 .snav-container {
   display: flex;
   flex-direction: column;
@@ -40,10 +43,13 @@ h1.app-name {
 
 .sidenav-container {
   flex: 1;
+  background-color: #243361;
 }
 
 mat-sidenav {
   width: 300px;
+  background-color: #243361;
+  color: #ced4da;
 }
 
 .side-content {
@@ -63,12 +69,20 @@ mat-sidenav {
 }
 
 table {
+  border-color:#090c34;
+  color: #858d98;
   width: 100%;
 }
+.table-bordered {
+  border-color:#090c34;
+}
+
 .table-div {
 
   overflow: auto;
   height: 455px;
+  border-color:#090c34;
+  color: #858d98;
 
 }
 
@@ -82,6 +96,16 @@ table {
   font-size: 11px;
   width: 100%;
 }
+.mat-option {
+  background-color:#18275b;
+  border-color:#0e1a32;
+  color: #ced4da;
+  }
+  .mat-option:hover {
+  background-color: #31669b;
+  border-color:#0e1a32;
+  color: #e1f0f6;
+  } 
 
 button {
   font-size: 14px;
@@ -89,10 +113,13 @@ button {
   margin: 10px;
 }
 
-td, th {
-  text-align:left;
+td,
+th {
+  text-align: left;
   font-size: 14px;
-  color:black;
+  border-color:#131d43;
+  color: #ced4da;
+  background-color:#101d4e;
 }
 
 .mat-row:hover .mat-cell {
@@ -112,7 +139,12 @@ mat-card {
 }
 
 .grey {
-  background-color: #e6e6e6;
+  position: relative;
+  color: black;
+  border-radius: 8px;
+  background-image: linear-gradient(80deg, #96c8ec, #85abf2, #9fb9ea, #a3ccee, #5fd0fd, #224688);
+  background-size: 400%;
+  background-position: 0% 0%;
 }
 
 .side-button {
@@ -121,27 +153,39 @@ mat-card {
 }
 
 .side-button:hover {
-  background-color: #3f51b5;
-  color: white;
+  position: relative;
+  color: var(--textColor2);
+  border-radius: 8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-size: 400%;
+  background-position: 0% 0%;
 }
 
 
 .botto-button:hover {
-  background-color: #3f51b5;
-  color: white;
+  position: relative;
+  color: var(--textColor2);
+  border-radius: 8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-size: 400%;
+  background-position: 0% 0%;
 }
 
 h2 {
   margin-top: 20px;
 }
-.row{
+
+.row {
   width: 100%;
- }
- .background-color{
-   background-color: #e6e6e6;
-   padding: 10px;
-   font-family: Arial, Helvetica, sans-serif;
-   font-weight: bold;
-   text-align: right;
-   
- }
+}
+
+.background-color {
+  background-color: #243361;
+  border-color: #0a0f1e;
+  color: #ced4da;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: right;
+
+}

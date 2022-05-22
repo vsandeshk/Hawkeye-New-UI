@@ -7,10 +7,19 @@
   margin-top: 10px;
   margin-right: 30px;
 }
-
+.mat-option {
+  background-color:#18275b;
+  border-color:#0e1a32;
+  color: #ced4da;
+  }
+  .mat-option:hover {
+  background-color: #31669b;
+  border-color:#0e1a32;
+  color: #e1f0f6;
+  } 
 .app-header {
-  background-color:#0a122a;
-  color: white;
+  background-color:#121446;
+  color: #ced4da;;
   justify-content: space-between;
   font-weight: bold;
   top: 0;
@@ -50,12 +59,14 @@ h1.app-name {
 
 .sidenav-container {
   flex: 1;
-  background-color: #243361;
+  /* background-color: #243361; */
+  background-color:#2051a5;
 }
 
-mat-sidenav {
+.mat-sidenav {
   width: 300px;
-  background-color:#243361;
+  /* background-color:#243361; */
+  background-color:#2051a5;
   color: #ced4da;
 
 }
@@ -85,39 +96,46 @@ mat-sidenav {
 }
 
 .table-div {
-
+  font-size: 100%;
   overflow: auto;
   height: 400px;
-  background-color: #080d4f;
-  color: white;
+  background-color: #121446;
+  color:#121446;
 
 }
 
 .date-nav {
-  background-color:#243361;
-  color: white;
-
-  
+  /* background-color:#243361; */
+  background-color:#2051a5;
+  color: #ced4da;
 }
-
 .data-table {
   margin-left: 30px;
+  
   margin-right: 30px;
   margin-top: 10px;
-  background-color:#243361;
+  /* background-color:#243361; */
+  background-color:#2051a5;
 }
 
 .mat-form-field{
-  font-size: 14px;
+  font-size: 100%;
   width: 32%;
   margin: 10px;
 }
+/* .table-div[_ngcontent-ugs-c223] {
+  font-size: 100%;
+  color:#121446;
+} */
 
 button {
-  font-size: 14px;
+  font-size: 100%;
   width: 35%;
   margin: 10px;
   /* background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%) */
+}
+.mat-table {
+ background-color:  #121446;
 }
 
 /* td, th {
@@ -128,10 +146,11 @@ button {
 
 td, th {
   text-align:left;
-  font-size: 14px;
-  color: white;
-  background-color: #080d4f;
+  font-size: 100%;
+  color: #ced4da;
+  background-color: #121446;
 }
+/* tr:nth-child(even) {background-color: #f2f2f2;}  */
 
 mat-header-cell {
   justify-content: center;
@@ -143,10 +162,10 @@ mat-header-cell {
 
 .blue {
   background-color: #3f51b5;
-  color: white;
+  color: #ced4da;
 }
 
-.grey {
+.side-button:hover  {
   position: relative;
   color:black;
   border-radius:8px;
@@ -171,7 +190,7 @@ mat-header-cell {
   font-size: 10px;
 }
 
-.side-button:hover {
+.grey{
   margin-top: 10px;
   position: relative;
   color: var(--textColor2);
@@ -184,6 +203,13 @@ mat-header-cell {
 
 
 .botto-button:hover {
+  /* position: relative;
+  color: var(--textColor2);
+  border-radius:8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-size: 400%;
+  background-position: 0% 0%; */
+  margin-top: 10px;
   position: relative;
   color: var(--textColor2);
   border-radius:8px;
@@ -200,7 +226,8 @@ h2 {
   width: 100%;
  }
  .background-color {
-  background-color:#243361;
+  /* background-color:#243361; */
+  background-color:#2051a5;
   border-color:#243361;
   color: #ced4da;
   padding: 10px;
@@ -209,6 +236,7 @@ h2 {
 }
 
 .side-content{
-  background-color:#243361;
+  /* background-color:#243361; */
+  background-color:#2051a5;
 }
 
