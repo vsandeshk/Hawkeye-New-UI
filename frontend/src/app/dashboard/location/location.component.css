@@ -1,6 +1,6 @@
 .app-header {
-  background-color: #0a122a;
-  color: #edf0f3;
+  background-color:#121446;
+  color: #ced4da;
   justify-content: space-between;
   font-weight: bold;
   top: 0;
@@ -12,8 +12,8 @@
 
 .search-header {
   margin-top: 2px;
-  background-color: #14214b;
-  color: #edf0f3;
+  background-color:#2051a5;
+  color: #ced4da;
   /* justify-content: space-between; */
   /*  font-weight: bold;*/
   top: 0;
@@ -76,12 +76,12 @@ h1.app-name {
 
 .sidenav-container {
   flex: 1;
-  background-color:#243361;
+  background-color:#2051a5;
 }
 
 mat-sidenav {
   width: 300px;
-  background-color:#243361;
+  background-color:#2051a5;
   color: #ced4da;
   /* margin-top: 30px; */
 }
@@ -111,7 +111,7 @@ mat-sidenav {
 
 table {
   width: 100%;
-  background-color:#101d4e;
+  /* background-color:#101d4e; */
 }
 .data-table {
   background-color:#101d4e;
@@ -153,9 +153,8 @@ td,
 th {
   /* text-align: left;
   font-size: 14px; */
-  border-color:#131d43;
   color: #ced4da;
-  background-color:#101d4e;
+  background-color: #121446;
 font-size: 100%;
 }
 
@@ -176,13 +175,20 @@ mat-card {
 } */
 
 .grey {
+  margin-top: 10px;
   position: relative;
+  color: var(--textColor2);
+  border-radius:8px;
+  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-size: 400%;
+  background-position: 0% 0%;
+  /* position: relative; */
   /* color: var(--textColor2); */
-  color:black;
+  /* color:black;
   border-radius: 8px;
   background-image: linear-gradient(80deg, #96c8ec, #85abf2, #9fb9ea, #a3ccee, #5fd0fd, #224688);
   background-size: 400%;
-  background-position: 0% 0%;
+  background-position: 0% 0%; */
   /* margin-left: 40%; */
 }
 
@@ -196,9 +202,9 @@ mat-card {
 }
 
 .table-div {
-  border-color:#080d4f;
-  color: #858d98;
-  background-color:#091643;
+  /* border-color:#080d4f; */
+  background-color: #121446;
+  color:#121446;
   margin-left: 10px;
   margin-right: 10px;
   /* margin-top: 1px; */
@@ -210,7 +216,7 @@ mat-card {
   position: relative;
   color: var(--textColor2);
   border-radius: 8px;
-  background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
+  background-image: linear-gradient(80deg, #96c8ec, #85abf2, #9fb9ea, #a3ccee, #5fd0fd, #224688);
   background-size: 400%;
   background-position: 0% 0%;
 }
@@ -218,7 +224,7 @@ mat-card {
 .botto-button:hover {
   position: relative;
   color: var(--textColor2);
-  border-radius: 8px;
+  border-radius:8px;
   background-image: linear-gradient(90deg, #0065ff, #6942ef, #6554c0, #008cff, #0065ff, #6942ef);
   background-size: 400%;
   background-position: 0% 0%;
@@ -237,12 +243,16 @@ h2 {
 }
 
 .background-color {
-  background-color: #243361;
-  border-color: #243361;
+  background-color:#2051a5;
+  border-color:#243361;
   color: #ced4da;
   padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-align: right;
+
+}
+.export-btn{
+  background-color:#2051a5;
 
 }
