@@ -246,7 +246,7 @@ h2 {
 
 form{
   background-color:#2051a5;
-}
+  border-color:#243361;}
 
 .table {
   border-color: lighten(#313533, 5%);
@@ -284,9 +284,9 @@ th {
 }
 
 /* // table */
->:not(caption)>*>* {
+/* >:not(caption)>*>* {
   background-color: #3b403d;
-}
+} */
 
 /* forms */
 .form-control {
